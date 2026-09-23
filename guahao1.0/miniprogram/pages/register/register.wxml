@@ -1,0 +1,126 @@
+<view class="container">
+
+<view class="form-card">
+
+  <view class="page-title">
+    {{typeName}}
+  </view>
+
+  <view class="form-item">
+    <view class="label">专家名称</view>
+    <view class="value">
+      {{doctor.name}}
+    </view>
+  </view>
+
+  <view class="form-item">
+    <view class="label">病种</view>
+
+    <picker
+      mode="selector"
+      range="{{diseases}}"
+      range-key="name"
+      value="{{diseaseIndex}}"
+      bindchange="chooseDisease"
+    >
+      <view class="picker-value">
+        {{diseaseIndex >= 0 ? diseases[diseaseIndex].name : "请选择病种"}}
+      </view>
+    </picker>
+  </view>
+
+  <view class="form-item">
+    <view class="label">就诊日期</view>
+
+    <picker
+      mode="selector"
+      range="{{dates}}"
+      range-key="text"
+      value="{{dateIndex}}"
+      bindchange="chooseDate"
+    >
+      <view class="picker-value">
+        {{dateIndex >= 0 ? dates[dateIndex].text : "请选择就诊日期"}}
+      </view>
+    </picker>
+  </view>
+
+  <view class="form-item">
+    <view class="label">预约时段</view>
+
+    <picker
+      mode="selector"
+      range="{{times}}"
+      value="{{timeIndex}}"
+      bindchange="chooseTime"
+    >
+      <view class="picker-value">
+        {{timeIndex >= 0 ? times[timeIndex] : "请选择预约时段"}}
+      </view>
+    </picker>
+  </view>
+
+  <view class="form-item">
+    <view class="label">患者姓名</view>
+
+    <input
+      class="input"
+      placeholder="请输入患者姓名"
+      value="{{patientName}}"
+      bindinput="inputName"
+    />
+  </view>
+
+  <view class="form-item">
+    <view class="label">联系方式</view>
+
+    <view class="phone-row">
+
+      <input
+        class="phone-input"
+        type="number"
+        maxlength="11"
+        placeholder="请输入手机号"
+        value="{{phone}}"
+        bindinput="inputPhone"
+      />
+
+      <button
+        class="phone-btn"
+        open-type="getPhoneNumber"
+        bindgetphonenumber="getPhoneNumber"
+      >
+        获取手机号
+      </button>
+
+    </view>
+  </view>
+
+  <view class="form-item description-item">
+    <view class="label">问题描述</view>
+
+    <textarea
+      class="textarea"
+      placeholder="请描述您的问题"
+      value="{{description}}"
+      bindinput="inputDescription"
+    />
+  </view>
+
+  <view class="price-row">
+    <text>预约费用</text>
+    <text class="price">
+      ¥{{price}}
+    </text>
+  </view>
+
+  <button
+    class="submit-btn"
+    bindtap="submit"
+  >
+    提交{{typeName}}
+  </button>
+
+</view>
+
+</view>

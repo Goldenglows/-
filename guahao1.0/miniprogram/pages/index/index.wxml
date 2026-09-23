@@ -1,0 +1,127 @@
+<view class="container">
+
+<block wx:for="{{doctors}}" wx:key="id">
+
+  <view class="doctor-card">
+
+    <view class="doctor-header">
+
+      <image
+        class="doctor-avatar"
+        src="{{item.avatar}}"
+        mode="aspectFill"
+      />
+
+      <view class="doctor-info">
+
+        <view class="doctor-name">
+          {{item.name}}
+          <text class="doctor-title">
+            {{item.title}}
+          </text>
+        </view>
+
+        <button
+          class="consult-btn"
+          data-id="{{item.id}}"
+          bindtap="fastRegister"
+        >
+          咨询挂号
+        </button>
+
+      </view>
+
+    </view>
+
+    <view class="doctor-section">
+      <view class="section-title">擅长</view>
+      <view class="section-content">
+        {{item.good}}
+      </view>
+    </view>
+
+    <view class="doctor-section">
+      <view class="section-title">医生简介</view>
+      <view class="section-content">
+        {{item.intro}}
+      </view>
+    </view>
+
+    <view class="view-data">
+
+      <view class="data-item">
+        <text class="data-number">{{item.views}}</text>
+        <text class="data-label">浏览量</text>
+      </view>
+
+      <view class="data-item">
+        <text class="data-number">{{item.yesterday}}</text>
+        <text class="data-label">昨日浏览</text>
+      </view>
+
+      <view class="data-item">
+        <text class="data-number">{{item.total}}</text>
+        <text class="data-label">总浏览</text>
+      </view>
+
+    </view>
+
+    <view class="register-box">
+
+      <view class="register-title">
+        <text>预约挂号</text>
+        <text class="price">
+          ¥{{item.price}}
+        </text>
+      </view>
+
+      <view class="registered">
+        历史挂号人数：{{item.registered}}
+      </view>
+
+      <view class="recent">
+        最近有号时间：
+        {{item.recent || "暂无号源"}}
+      </view>
+
+      <button
+        class="register-btn"
+        data-id="{{item.id}}"
+        bindtap="register"
+      >
+        预约挂号
+      </button>
+
+    </view>
+
+    <view class="fast-register-box">
+
+      <view class="fast-title">
+        <text>极速问诊</text>
+        <text class="fast-price">
+          ¥{{item.fastPrice}}
+        </text>
+      </view>
+
+      <button
+        class="fast-btn"
+        data-id="{{item.id}}"
+        bindtap="fastRegister"
+      >
+        极速问诊
+      </button>
+
+    </view>
+
+  </view>
+
+</block>
+
+<button
+  class="quick-register"
+  bindtap="quickRegister"
+>
+  手机号快捷预约
+</button>
+
+</view>
